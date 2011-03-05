@@ -1,0 +1,11 @@
+de:
+  humpyard:
+    tinymce:
+      link:
+        dialog:
+          title: "Link einfügen/bearbeiten"
+          general_tab: "Allgemein"
+          general_props: "Allgemeine Eigenschaften"
+          url: "Adresse"
+          page: "Seite im CMS"
+          media: "Medium im CMS"

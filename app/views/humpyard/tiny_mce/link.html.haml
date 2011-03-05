@@ -1,0 +1,49 @@
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title= I18n.t 'humpyard.tinymce.link.dialog.title'
+    = javascript_include_tag "tiny_mce/tiny_mce_popup.js", "tiny_mce/utils/mctabs.js", "tiny_mce/utils/form_utils.js", "tiny_mce/utils/validate.js", "tiny_mce/plugins/hylink/js/hylink.js"
+    =stylesheet_link_tag "/javascripts/tiny_mce/plugins/hylink/css/hylink.css"
+  %body#hylink{:style => "display: none"}
+    %form{:action => "#", :onsubmit => "insertAction();return false;"}
+      .tabs
+        %ul
+          %li#general_tab.current
+            %span
+              %a{:href => "javascript:mcTabs.displayTab('general_tab','general_panel');", :onmousedown => "return false;"}= I18n.t 'humpyard.tinymce.link.dialog.general_tab'
+      .panel_wrapper
+        #general_panel.panel.current
+          %fieldset
+            %legend= I18n.t 'humpyard.tinymce.link.dialog.general_props'
+            %table{:border => "0", :cellpadding => "4", :cellspacing => "0"}
+              %tr
+                %td.nowrap
+                  %label#hreflabel{:for => "href"}= I18n.t 'humpyard.tinymce.link.dialog.url'
+                %td
+                  %table{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+                    %tr
+                      %td
+                        %input#href.mceFocus{:name => "href", :onchange => "selectByValue(this.form,'linklisthref',this.value);", :type => "text", :value => ""}/
+                      %td#hrefbrowsercontainer &nbsp;
+              %tr
+                %td.nowrap
+                  %label#hylinklabel{:for => "hylink"}= I18n.t 'humpyard.tinymce.link.dialog.page'
+                %td
+                  %table{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+                    %tr
+                      %td
+                        = select_tag 'hylink', options_for_select([''] + @pages, :selected => 0), :onchange => 'urlFromHumpyardPageSelect(this);'
+                      %td#hylinkbrowsercontainer &nbsp;
+              %tr
+                %td.nowrap
+                  %label#hylinklabel{:for => "hymedia"}= I18n.t 'humpyard.tinymce.link.dialog.media'
+                %td
+                  %table{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+                    %tr
+                      %td
+                        = select_tag 'hymedia', options_for_select([''] + @medias.collect{|m| [m.title, m.id]}), :onchange => 'urlFromHumpyardMediaSelect(this);'
+                      %td#hymediabrowsercontainer &nbsp;
+
+        .mceActionPanel
+          %input#insert{:name => "insert", :type => "submit", :value => "{#insert}"}/
+          %input#cancel{:name => "cancel", :onclick => "tinyMCEPopup.close();", :type => "button", :value => "{#cancel}"}/
