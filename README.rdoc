@@ -14,6 +14,7 @@ Use TinyMCE as Editor in Humpyard CMS
 * Add some Javascript stuff to your html head (e.g. in app/views/layouts/application.html.haml)
     :javascript
       hyAdminPath = '#{Humpyard::config.admin_prefix}'
+    = javascript_include_tag 'humpyard_tinymce'
     = javascript_include_tag 'tiny_mce/jquery.tinymce'
     
 == Note on Patches/Pull Requests
