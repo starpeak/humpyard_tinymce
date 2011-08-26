@@ -1,12 +1,12 @@
 .humpyard-tab
   .humpyard-tab-title
     Text Content
-  = form.input :html_content, :as => :text, :class => 'content wysiwyg', :rows => 20, :textile_rte => true
+  = form.input :html_content, as: :text, class: 'content wysiwyg', rows: 20, textile_rte: true
   :javascript
     $(function()
       {
         $('textarea.wysiwyg').tinymce({
-          script_url : '/javascripts/tiny_mce/tiny_mce.js',
+          script_url : '#{javascript_path 'tiny_mce/tiny_mce'}',
           theme : "advanced",
           language : '#{I18n.locale}',
           plugins : "safari,pagebreak,style,layer,table,save,hylink,iespell,inlinepopups,insertdatetime,preview,searchreplace,print,paste,directionality,fullscreen,visualchars,nonbreaking,xhtmlxtras,template,contextmenu",

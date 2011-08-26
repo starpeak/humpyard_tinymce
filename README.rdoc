@@ -2,20 +2,34 @@
 
 Use TinyMCE as Editor in Humpyard CMS
 
+== Requirements
+
+humpyard_tinymce requires the following to run:
+
+* Ruby 1.9.2 or later (already needed by humpyard itself)
+* Rails 3.1 or later (for asset pipeline)
+* humpyard gem >= 0.1.0 or later (of course)
+* jquery-rails gem (it depends on jquery)
+* RedCloth gem 
+
 == Installation
 
-* Add Humpyard TinyMCE to your Rails application's Gemfile after Humpyard. 
-    gem 'humpyard',               :git => 'git://github.com/starpeak/humpyard.git'
-    gem 'humpyard_tinymce',       :git => 'git://github.com/starpeak/humpyard_tinymce.git'
-
-* Run the Skeleton Generator
-    rails g humpyard:tinymce:skeleton
+* Add Humpyard TinyMCE to your Rails application's Gemfile after RedCloth and Humpyard. 
+    gem 'RedCloth',         '>=4.2.3'
+    gem 'humpyard',         '>=0.1.0'
+    gem 'humpyard_tinymce', '>=0.1.0'
     
-* Add some Javascript stuff to your html head (e.g. in app/views/layouts/application.html.haml)
+* Add path to admin prefix to Javascript variables (e.g. in app/views/layouts/application.html.haml)
     :javascript
       hyAdminPath = '#{Humpyard::config.admin_prefix}'
-    = javascript_include_tag 'humpyard_tinymce'
-    = javascript_include_tag 'tiny_mce/jquery.tinymce'
+      
+* Add humpyard_tinymce to your application's javascript. You have to use jQuery as it is the only JS framework supported by this gem.
+    //= require jquery
+    //= require jquery-ui
+    //= require jquery_ujs
+    //= require humpyard_form_jquery
+    //= require 'humpyard_jquery'
+    //= require 'humpyard_tinymce'
     
 == Note on Patches/Pull Requests
  

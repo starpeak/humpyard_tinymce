@@ -2,7 +2,7 @@ class Humpyard::TinyMceController < ApplicationController
   def link
     @pages = _page_tree 
     @medias = Humpyard::Asset.all
-    render :layout => false
+    render layout: false
   end
 
   protected
