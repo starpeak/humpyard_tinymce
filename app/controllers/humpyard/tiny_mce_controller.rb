@@ -16,7 +16,7 @@ class Humpyard::TinyMceController < ApplicationController
     else
       pages = []
       pages << ["#{indent > 1 ? '| '*(indent-1) : ''}#{indent > 0 ? '+-' : ''}#{page.title}", page.id]
-      page.child_pages.order("position ASC").each do |child|
+      page.child_pages.each do |child|
         pages += _page_tree child, indent + 1
       end
     end
