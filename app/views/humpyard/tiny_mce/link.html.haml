@@ -2,8 +2,14 @@
 %html{xmlns: "http://www.w3.org/1999/xhtml"}
   %head
     %title= I18n.t 'humpyard.tinymce.link.dialog.title'
-    = javascript_include_tag "tiny_mce/tiny_mce_popup.js", "tiny_mce/utils/mctabs.js", "tiny_mce/utils/form_utils.js", "tiny_mce/utils/validate.js", "tiny_mce/plugins/hylink/js/hylink.js"
-    =stylesheet_link_tag "/javascripts/tiny_mce/plugins/hylink/css/hylink.css"
+    %script{type: "text/javascript", src: "#{Rails.application.config.assets.prefix}/tiny_mce/tiny_mce_popup.js"}
+    %script{type: "text/javascript", src: "#{Rails.application.config.assets.prefix}/tiny_mce/utils/mctabs.js"}
+    %script{type: "text/javascript", src: "#{Rails.application.config.assets.prefix}/tiny_mce/utils/form_utils.js"}
+    %script{type: "text/javascript", src: "#{Rails.application.config.assets.prefix}/tiny_mce/utils/validate.js"}
+    %script{type: "text/javascript", src: "#{Rails.application.config.assets.prefix}/tiny_mce/plugins/hylink/js/hylink.js"}
+    %link{rel: "stylesheet", href: "#{Rails.application.config.assets.prefix}/tiny_mce/plugins/hylink/css/hylink.css"}
+    =#javascript_include_tag "tiny_mce/tiny_mce_popup.js", "tiny_mce/utils/mctabs.js", "tiny_mce/utils/form_utils.js", "tiny_mce/utils/validate.js", "tiny_mce/plugins/hylink/js/hylink.js"
+    =#stylesheet_link_tag "/javascripts/tiny_mce/plugins/hylink/css/hylink.css"
   %body#hylink{style: "display: none"}
     %form{action: "#", onsubmit: "insertAction();return false;"}
       .tabs
