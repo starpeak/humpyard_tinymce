@@ -3,7 +3,7 @@ namespace :humpyard do
     task :copy_assets do
       target = File.join(Rails.public_path, Rails.application.config.assets.prefix)
       mkdir_p target
-      %(vender app).each do |t|
+      %w(vender app).each do |t|
       assets = File.expand_path(File.dirname(__FILE__) + "/../../#{t}/assets/javascripts/tiny_mce")
         cp_r assets, target
       end
