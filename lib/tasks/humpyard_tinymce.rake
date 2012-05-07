@@ -1,11 +1,13 @@
 namespace :humpyard do
   namespace :tinymce do
     task :copy_assets do
-      assets = File.expand_path(File.dirname(__FILE__) + "/../../app/assets/javascripts/tiny_mce")
-      target = File.join(Rails.public_path, Rails.application.config.assets.prefix)
-    
       mkdir_p target
-      cp_r assets, target
+      %(vender app).each do |t|
+      assets = File.expand_path(File.dirname(__FILE__) + "/../../#{t}/assets/javascripts/tiny_mce")
+        target = File.join(Rails.public_path, Rails.application.config.assets.prefix)
+    
+        cp_r assets, target
+      end
     end
   end
 end
