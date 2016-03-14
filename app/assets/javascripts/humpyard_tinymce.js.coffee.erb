@@ -1,7 +1,7 @@
 #= require 'tiny_mce/jquery.tinymce'
       
 jQuery -> 
-  jQuery('form').on 'humpyard:form:init', (e, form) ->  
+  jQuery(document).on 'humpyard:form:init', 'form', (e, form) ->  
     jQuery('textarea.wysiwyg', form).tinymce
       script_url : '<%= asset_path('tiny_mce/tiny_mce') %>',
       theme : "advanced",
@@ -31,6 +31,6 @@ jQuery ->
         username : "Some User",
         staffid : "991234"
       
-  jQuery('form').on 'humpyard:form:submit', (e) ->
+  jQuery(document).on 'humpyard:form:submit', 'form', (e) ->
     if typeof(tinyMCE) == 'object'
       tinyMCE.triggerSave()
