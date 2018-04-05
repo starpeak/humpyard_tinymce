@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.authors = ["Sven G. Broenstrup"]
   s.email = 'info@spom.net'
   s.homepage = %q{http://humpyard.org/}
-  s.files = Dir["lib/**/*"] + Dir["vendor/**/*"] + Dir["app/**/*"] + Dir["config/**/*"] + Dir["db/migrate/*"], ["MIT-LICENSE", "README.rdoc"]
+  s.files = Dir.glob("lib/**/*") + Dir.glob("vendor/**/*") + Dir.glob("app/**/*") + Dir.glob("config/**/*") + Dir.glob("db/migrate/*") + ["MIT-LICENSE", "README.rdoc"]
   #s.add_dependency 'digestion', '>= 1.1'
   s.add_dependency 'humpyard', '>= 0.1.0'
   s.add_dependency 'RedCloth', '>=4.2.3'
